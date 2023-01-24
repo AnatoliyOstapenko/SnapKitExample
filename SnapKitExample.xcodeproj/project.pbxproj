@@ -69,14 +69,22 @@
 		BC58A4342980090C0017D2C5 /* SnapKitExample */ = {
 			isa = PBXGroup;
 			children = (
-				BC58A4352980090C0017D2C5 /* AppDelegate.swift */,
-				BC58A4372980090C0017D2C5 /* SceneDelegate.swift */,
 				BC58A4392980090C0017D2C5 /* ViewController.swift */,
+				BC58A494298063230017D2C5 /* Support */,
 				BC58A43E2980090F0017D2C5 /* Assets.xcassets */,
 				BC58A4402980090F0017D2C5 /* LaunchScreen.storyboard */,
 				BC58A4432980090F0017D2C5 /* Info.plist */,
 			);
 			path = SnapKitExample;
+			sourceTree = "<group>";
+		};
+		BC58A494298063230017D2C5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				BC58A4352980090C0017D2C5 /* AppDelegate.swift */,
+				BC58A4372980090C0017D2C5 /* SceneDelegate.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		F30E5FDC910CECB524B2E286 /* Pods */ = {

@@ -19,10 +19,12 @@ class ViewController: UIViewController {
         configuration.image = UIImage(systemName: "arrowshape.backward")
         configuration.imagePadding = 4
         
-        configuration.baseBackgroundColor = .systemBlue
-        configuration.baseForegroundColor = .systemBlue
+        configuration.baseBackgroundColor = .systemCyan
+        configuration.baseForegroundColor = .systemCyan
 
-        let button = UIButton(configuration: configuration)
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in
+            self.mainLabel.text = ""
+        })
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -39,7 +41,7 @@ class ViewController: UIViewController {
     
     private lazy var newAddButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = "Back to Profile"
+        configuration.title = "Add new item"
         configuration.image = UIImage(systemName: "plus.circle")
         configuration.imagePadding = 4
         
@@ -63,14 +65,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        mainLabel.text = "Toggle right switch"
     }
     
     // MARK: - Methods
     
+    @objc private func backButtonTap() {
+        print("tap tap")
+    }
+    
     @objc private func segmentTap(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: print("short text")
-        case 1: print("wide text")
+        case 0: mainLabel.text = Constants.short
+        case 1: mainLabel.text = Constants.wide
         default: break
         }
     }
@@ -78,7 +85,7 @@ class ViewController: UIViewController {
     private func updateUI() {
         view.backgroundColor = .systemBackground
         view.addAllSubbviews(backButton, segment, newAddButton, mainLabel)
-        
+
         /// Back button
         backButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(padding)
@@ -86,6 +93,7 @@ class ViewController: UIViewController {
         }
         
         /// Segmented switch
+        segment.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         segment.snp.makeConstraints { make in
             make.trailing.equalTo(view.snp.trailing).offset(-padding)
             make.centerY.equalTo(backButton.snp.centerY)
@@ -102,8 +110,12 @@ class ViewController: UIViewController {
         mainLabel.snp.makeConstraints { make in
             make.leading.equalTo(backButton.snp.trailing).offset(padding)
             make.trailing.equalTo(newAddButton.snp.leading).offset(-padding)
+            make.centerY.equalTo(backButton.snp.centerY)
+            make.height.equalTo(backButton.snp.height)
         }
     }
+    
+    
 }
 
 private extension UIView {
@@ -112,3 +124,7 @@ private extension UIView {
     }
 }
 
+private enum Constants {
+    static let short = "Short text"
+    static let wide = "If you set a segmented control to have a momentary style, a segment doesn’t show itself as selected (blue background) when the user touches it. The disclosure button is always momentary and doesn’t affect the actual selection."
+}
