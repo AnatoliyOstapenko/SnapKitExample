@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FCB88888CA6A86B40CA9FCD /* libPods-SnapKitExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C0443DECC4A0B7CFEB6D80 /* libPods-SnapKitExample.a */; };
 		BC58A4362980090C0017D2C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58A4352980090C0017D2C5 /* AppDelegate.swift */; };
 		BC58A4382980090C0017D2C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58A4372980090C0017D2C5 /* SceneDelegate.swift */; };
 		BC58A43A2980090C0017D2C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58A4392980090C0017D2C5 /* ViewController.swift */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		340A68F9B242EA016CFAF1FE /* Pods-SnapKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapKitExample.release.xcconfig"; path = "Target Support Files/Pods-SnapKitExample/Pods-SnapKitExample.release.xcconfig"; sourceTree = "<group>"; };
+		A0C0443DECC4A0B7CFEB6D80 /* libPods-SnapKitExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SnapKitExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88431A72B2D733B7E554BD0 /* Pods-SnapKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapKitExample.debug.xcconfig"; path = "Target Support Files/Pods-SnapKitExample/Pods-SnapKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 		BC58A4322980090C0017D2C5 /* SnapKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC58A4352980090C0017D2C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC58A4372980090C0017D2C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FCB88888CA6A86B40CA9FCD /* libPods-SnapKitExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54CFB87706323B1D3E7EC6B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0C0443DECC4A0B7CFEB6D80 /* libPods-SnapKitExample.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC58A4292980090C0017D2C5 = {
 			isa = PBXGroup;
 			children = (
 				BC58A4342980090C0017D2C5 /* SnapKitExample */,
 				BC58A4332980090C0017D2C5 /* Products */,
+				F30E5FDC910CECB524B2E286 /* Pods */,
+				54CFB87706323B1D3E7EC6B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = SnapKitExample;
 			sourceTree = "<group>";
 		};
+		F30E5FDC910CECB524B2E286 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B88431A72B2D733B7E554BD0 /* Pods-SnapKitExample.debug.xcconfig */,
+				340A68F9B242EA016CFAF1FE /* Pods-SnapKitExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,6 +95,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC58A4462980090F0017D2C5 /* Build configuration list for PBXNativeTarget "SnapKitExample" */;
 			buildPhases = (
+				6F1691C09F848F1A14B20ECE /* [CP] Check Pods Manifest.lock */,
 				BC58A42E2980090C0017D2C5 /* Sources */,
 				BC58A42F2980090C0017D2C5 /* Frameworks */,
 				BC58A4302980090C0017D2C5 /* Resources */,
@@ -128,6 +153,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6F1691C09F848F1A14B20ECE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SnapKitExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC58A42E2980090C0017D2C5 /* Sources */ = {
@@ -270,6 +320,7 @@
 		};
 		BC58A4472980090F0017D2C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B88431A72B2D733B7E554BD0 /* Pods-SnapKitExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -284,6 +335,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,6 +351,7 @@
 		};
 		BC58A4482980090F0017D2C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 340A68F9B242EA016CFAF1FE /* Pods-SnapKitExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -313,6 +366,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
