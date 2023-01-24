@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         view.addAllSubbviews(backButton, segment, newAddButton, mainLabel)
 
         /// Back button
+        backButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         backButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(padding)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(padding)
@@ -101,6 +102,7 @@ class ViewController: UIViewController {
         }
         
         /// New add button
+        newAddButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         newAddButton.snp.makeConstraints { make in
             make.trailing.equalTo(segment.snp.leading).offset(-padding)
             make.centerY.equalTo(backButton.snp.centerY)
@@ -114,7 +116,6 @@ class ViewController: UIViewController {
             make.height.equalTo(backButton.snp.height)
         }
     }
-    
     
 }
 
