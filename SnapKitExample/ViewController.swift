@@ -12,11 +12,12 @@ class ViewController: UIViewController {
     
     // MARK: - View Properties
     private let padding: CGFloat = 12
+    private var isIPad: Bool = false
     
     private lazy var backButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = "Back to Profile"
-        configuration.image = UIImage(systemName: "arrowshape.backward")
+        configuration.title = isIPad ? Constants.back : ""
+        configuration.image = Constants.backImage
         configuration.imagePadding = 4
         
         configuration.baseBackgroundColor = .systemCyan
@@ -41,8 +42,8 @@ class ViewController: UIViewController {
     
     private lazy var newAddButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = "Add new item"
-        configuration.image = UIImage(systemName: "plus.circle")
+        configuration.title = isIPad ? Constants.add : ""
+        configuration.image = Constants.addImage
         configuration.imagePadding = 4
         
         configuration.baseBackgroundColor = .systemRed
@@ -65,7 +66,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        mainLabel.text = "Toggle right switch"
+        mainLabel.text = Constants.initialText
+        isIPad = UIDevice.current.userInterfaceIdiom == .pad ? true : false
     }
     
     // MARK: - Methods
@@ -96,7 +98,7 @@ class ViewController: UIViewController {
         /// Segmented switch
         segment.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         segment.snp.makeConstraints { make in
-            make.trailing.equalTo(view.snp.trailing).offset(-padding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-padding)
             make.centerY.equalTo(backButton.snp.centerY)
             make.height.equalTo(backButton.snp.height)
         }
@@ -126,6 +128,12 @@ private extension UIView {
 }
 
 private enum Constants {
+    static let initialText = "Toggle right switch"
+    static let back = "Back to Profile"
+    static let backImage = UIImage(systemName: "arrowshape.backward")
+    static let add = "Add new item"
+    static let addImage = UIImage(systemName: "plus.circle")
     static let short = "Short text"
     static let wide = "If you set a segmented control to have a momentary style, a segment doesn’t show itself as selected (blue background) when the user touches it. The disclosure button is always momentary and doesn’t affect the actual selection."
 }
+
