@@ -34,7 +34,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 20, weight: .regular)
-        label.minimumScaleFactor = 0.7
+        label.minimumScaleFactor = 0.6
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
