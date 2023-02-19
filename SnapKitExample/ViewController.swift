@@ -9,10 +9,11 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-    
-    // MARK: - View Properties
+        
     private let padding: CGFloat = 12
     private var isIPad: Bool = false
+    
+    // MARK: - View Properties
     
     private lazy var backButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
@@ -62,6 +63,26 @@ class ViewController: UIViewController {
         return segment
     }()
     
+    private lazy var leftLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Left title label"
+        label.backgroundColor = .systemCyan
+        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var rightLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Right title label"
+        label.backgroundColor = .systemPink
+        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.textAlignment = .right
+        return label
+    }()
+    
+    private let container = UIView()
+    
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -87,7 +108,26 @@ class ViewController: UIViewController {
     
     private func updateUI() {
         view.backgroundColor = .systemBackground
-        view.addAllSubbviews(backButton, segment, newAddButton, mainLabel)
+        view.addAllSubbviews(backButton, segment, newAddButton, mainLabel, container)
+        container.addAllSubbviews(leftLabel, rightLabel)
+        container.backgroundColor = .clear
+        
+        /// Container for left and right labels
+        container.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(backButton.snp.bottom).offset(10)
+            make.height.equalTo(100)
+        }
+        
+        leftLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(5)
+            make.centerY.equalToSuperview()
+        }
+        
+        rightLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(5)
+            make.centerY.equalToSuperview()
+        }
 
         /// Back button
         backButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -120,6 +160,20 @@ class ViewController: UIViewController {
         }
     }
     
+}
+
+extension ViewController {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        let isPortrait = UIDevice.current.orientation.isPortrait
+        
+        container.snp.updateConstraints { make in
+            make.leading.equalTo(isPortrait ? 0 : 50)
+            make.trailing.equalTo(isPortrait ? 0 : -50)
+        }
+        
+    }
 }
 
 private extension UIView {
